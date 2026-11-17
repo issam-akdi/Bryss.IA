@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080812">
+<meta name="author" content="Issam Akdi">
+<meta name="description" content="BRYSS AI — votre assistant intelligent. Créé par Issam Akdi.">
+<title>BRYSS AI — Votre intelligence, sans limites</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<script>try{if(localStorage.getItem('bryss_intro_done_v1')==='1')document.documentElement.classList.add('seen-intro')}catch(e){}</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#080812;--panel:#10101e;--panel2:#151529;--line:rgba(164,145,255,.15);--text:#f5f3ff;--muted:#9693ae;--purple:#9b6cff;--blue:#4b8dff;--glow:rgba(137,91,255,.24)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 55% -20%,rgba(90,55,180,.23),transparent 45%),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}button,input,textarea{font:inherit}button{cursor:pointer}
+.app{display:flex;min-height:100vh}.sidebar{width:270px;background:rgba(12,12,24,.92);border-right:1px solid var(--line);padding:22px 16px;display:flex;flex-direction:column;gap:22px;z-index:3}.brand{display:flex;align-items:center;gap:12px;padding:2px 8px 16px}.logo{height:42px;width:42px;border-radius:14px;background:linear-gradient(135deg,#a56bff,#386cff);display:grid;place-items:center;box-shadow:0 0 28px var(--glow);font-family:'Space Grotesk';font-weight:700;font-size:21px}.brandname{font:700 20px 'Space Grotesk';letter-spacing:.5px}.brandname span{color:#a987ff}.tagline{font-size:10px;color:var(--muted);letter-spacing:2px;margin-top:2px}.newchat{border:1px solid rgba(162,123,255,.38);background:linear-gradient(100deg,rgba(141,88,255,.18),rgba(65,123,255,.12));color:white;padding:13px 14px;border-radius:13px;text-align:left;font-weight:600}.newchat:hover{border-color:#a987ff;box-shadow:0 0 20px var(--glow)}.navlabel{font-size:10px;letter-spacing:1.8px;color:#77738f;padding:0 10px;margin-bottom:-12px}.navitem{padding:11px 12px;border-radius:10px;color:#b9b5d0;display:flex;gap:11px;align-items:center;font-size:13px}.navitem.active,.navitem:hover{background:rgba(143,104,255,.13);color:#fff}.navitem .ico{width:18px;text-align:center;color:#a88aff}.history{display:flex;flex-direction:column;gap:4px}.history button{background:none;border:0;color:#aaa6c0;text-align:left;padding:9px 12px;border-radius:9px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.history button:hover{background:#17172b;color:white}.sidebottom{margin-top:auto;border-top:1px solid var(--line);padding-top:15px}.profile{display:flex;align-items:center;gap:10px;padding:10px 8px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#9d70ff,#477dff);font-weight:700}.profile small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.main{flex:1;min-width:0;display:flex;flex-direction:column;position:relative}.topbar{height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;background:rgba(8,8,18,.55);backdrop-filter:blur(14px)}.model{display:flex;align-items:center;gap:9px;font-weight:600;font-size:13px}.pulse{width:8px;height:8px;border-radius:50%;background:#65e6b0;box-shadow:0 0 10px #65e6b0}.topactions{display:flex;gap:9px}.iconbtn{border:1px solid var(--line);background:#121222;color:#c8c3df;border-radius:10px;width:37px;height:37px}.iconbtn:hover{border-color:#8f6cff;color:white}.content{width:min(920px,100%);margin:0 auto;padding:38px 28px 24px;display:flex;flex-direction:column;flex:1}.welcome{text-align:center;margin:auto auto 25px;max-width:650px}.orb{width:76px;height:76px;margin:0 auto 24px;border-radius:25px;background:linear-gradient(145deg,rgba(160,104,255,.95),rgba(57,111,255,.95));display:grid;place-items:center;font:700 34px 'Space Grotesk';box-shadow:0 0 55px rgba(119,83,255,.35),inset 0 1px 8px #ffffff70;transform:rotate(-5deg);animation:float 4s ease-in-out infinite}@keyframes float{50%{transform:translateY(-7px) rotate(2deg)}}h1{font:600 clamp(30px,5vw,48px) 'Space Grotesk';margin:0 0 12px;letter-spacing:-1.7px}.gradient{background:linear-gradient(90deg,#c4a6ff,#78a8ff);-webkit-background-clip:text;background-clip:text;color:transparent}.welcome p{color:var(--muted);line-height:1.65;font-size:14px;margin:0 auto;max-width:510px}.suggestions{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin:26px auto 0;max-width:620px}.suggestion{border:1px solid var(--line);background:rgba(19,19,37,.8);border-radius:13px;padding:15px;text-align:left;color:#dedaf0;font-size:12px;line-height:1.5}.suggestion b{display:block;font-size:13px;margin-bottom:4px;color:white}.suggestion:hover{border-color:#926cff;background:#1b1932}.chat{display:flex;flex-direction:column;gap:20px;padding:8px 0 20px}.message{display:flex;gap:12px;align-items:flex-start;max-width:850px;animation:appear .25s ease}@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.message.user{align-self:flex-end;flex-direction:row-reverse}.msgavatar{width:31px;height:31px;flex:0 0 31px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#9969ff,#477fff);font-weight:700;font-size:12px}.message.user .msgavatar{background:#25243a;color:#cfc7ed}.bubble{padding:13px 16px;border:1px solid var(--line);background:#121222;border-radius:4px 15px 15px 15px;font-size:13px;line-height:1.65;color:#e9e6f4;white-space:pre-wrap;max-width:690px}.message.user .bubble{background:linear-gradient(120deg,rgba(119,78,211,.28),rgba(49,93,190,.2));border-radius:15px 4px 15px 15px}.composer-wrap{position:sticky;bottom:0;padding:12px 0 0;background:linear-gradient(transparent,var(--bg) 20%)}.composer{border:1px solid rgba(158,125,255,.28);background:rgba(17,17,32,.96);border-radius:17px;padding:12px 13px 10px;box-shadow:0 12px 45px #0008,0 0 24px rgba(112,75,220,.08)}.composer:focus-within{border-color:#8c68ec;box-shadow:0 0 0 3px rgba(139,100,255,.1)}textarea{width:100%;resize:none;min-height:48px;max-height:150px;border:0;outline:0;background:transparent;color:white;padding:5px 4px;font-size:14px;line-height:1.5}textarea::placeholder{color:#77738e}.composebottom{display:flex;align-items:center;justify-content:space-between}.tools{display:flex;gap:7px}.toolbtn{background:transparent;border:0;color:#9b97b2;padding:7px 9px;border-radius:8px;font-size:12px}.toolbtn:hover{background:#25213b;color:white}.send{height:37px;width:39px;border:0;border-radius:11px;background:linear-gradient(135deg,#a16aff,#477fff);color:white;font-size:17px;box-shadow:0 4px 15px #7751dd55}.hint{text-align:center;color:#696681;font-size:10px;margin:10px 0 0}.typing{color:#aaa2c8;font-size:12px;padding:8px 0}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#24213b;border:1px solid #7157b5;padding:10px 15px;border-radius:10px;font-size:12px;display:none;z-index:10}.modalback{position:fixed;inset:0;background:#0009;display:none;place-items:center;z-index:9;padding:20px}.modal{width:min(440px,100%);background:#121222;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 20px 70px #000b}.modal h2{font:600 22px 'Space Grotesk';margin:0 0 8px}.modal p{color:var(--muted);font-size:13px;line-height:1.6}.modal input{width:100%;background:#090916;border:1px solid var(--line);border-radius:10px;padding:12px;color:white;margin:8px 0}.modal .primary{width:100%;padding:12px;border:0;border-radius:10px;background:linear-gradient(100deg,#9867f5,#477fff);color:white;font-weight:600;margin-top:10px}.mobilemenu{display:none}
+@media(max-width:760px){.sidebar{position:fixed;left:-280px;top:0;bottom:0;transition:left .25s;box-shadow:20px 0 50px #0008}.sidebar.open{left:0}.mobilemenu{display:inline-grid}.topbar{padding:0 15px;height:60px}.content{padding:27px 15px 18px}.suggestions{grid-template-columns:1fr}.welcome{margin-top:auto}.brandname{font-size:19px}.hint{font-size:9px}}
+
+/* ===== Animation de bienvenue (premier lancement) ===== */
+.seen-intro .intro{display:none}
+.intro{position:fixed;inset:0;z-index:100;background:radial-gradient(ellipse at 50% 28%,#1d1144 0%,#0b0a1c 55%,#06060f 100%);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:24px 24px 0;overflow:hidden;transition:opacity .6s ease,transform .6s ease,visibility .6s;color:#f5f3ff;user-select:none;-webkit-user-select:none}
+.intro[hidden]{display:none}
+.intro.hide{opacity:0;transform:scale(1.04);visibility:hidden;pointer-events:none}
+#introFx{position:absolute;inset:0;width:100%;height:100%;opacity:.75;pointer-events:none}
+.introglow{position:absolute;width:520px;height:520px;left:50%;top:38%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(130,85,255,.32),transparent 65%);filter:blur(30px);animation:breathe 6s ease-in-out infinite;pointer-events:none}
+@keyframes breathe{50%{transform:translate(-50%,-50%) scale(1.18);opacity:.75}}
+.skip{position:absolute;top:max(18px,env(safe-area-inset-top));inset-inline-end:18px;z-index:5;background:rgba(255,255,255,.07);border:1px solid rgba(180,160,255,.28);color:#e2dcff;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:500;backdrop-filter:blur(8px);transition:.2s}
+.skip:hover,.skip:focus-visible{background:rgba(155,108,255,.25);border-color:#a987ff;outline:0}
+.stage{position:relative;z-index:2;display:grid;width:min(700px,100%);flex:1;min-height:0}
+.slide{grid-area:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;opacity:0;visibility:hidden;transform:translateY(16px) scale(.98);transition:opacity .5s ease,transform .5s ease,visibility .5s}
+.slide.active{opacity:1;visibility:visible;transform:none}
+.slide.active .r{animation:rise .75s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--d,0)*1ms)}
+@keyframes rise{from{opacity:0;transform:translateY(22px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.biglogo{position:relative;width:104px;height:104px;border-radius:34px;background:linear-gradient(145deg,#a56bff,#386cff);display:grid;place-items:center;font:700 52px 'Space Grotesk',sans-serif;box-shadow:0 0 80px rgba(119,83,255,.55),inset 0 2px 12px #ffffff80;margin-bottom:34px}
+.slide.active .biglogo{animation:logoin 1.1s cubic-bezier(.2,1.2,.3,1) both}
+@keyframes logoin{from{opacity:0;transform:scale(.3) rotate(-30deg)}to{opacity:1;transform:rotate(-5deg)}}
+.biglogo::before,.biglogo::after{content:"";position:absolute;inset:-2px;border-radius:36px;border:2px solid rgba(170,140,255,.6);opacity:0}
+.slide.active .biglogo::before{animation:ring 2.4s ease-out .9s infinite}
+.slide.active .biglogo::after{animation:ring 2.4s ease-out 1.7s infinite}
+@keyframes ring{from{opacity:.8;transform:scale(1)}to{opacity:0;transform:scale(2)}}
+.word{font:700 clamp(40px,9vw,66px) 'Space Grotesk',sans-serif;letter-spacing:3px;display:flex;gap:2px;direction:ltr}
+.word span{display:inline-block}
+.word .ai{margin-left:14px;color:#b093ff}
+.slide.active .word span{animation:letter .6s cubic-bezier(.2,.9,.3,1.3) both;animation-delay:calc(900ms + var(--i)*80ms)}
+@keyframes letter{from{opacity:0;transform:translateY(34px) scale(.6)}to{opacity:1;transform:none}}
+.tag{margin-top:16px;font-size:12px;letter-spacing:4px;color:#9a96b6}
+.ititle{font:600 clamp(28px,6vw,46px)/1.12 'Space Grotesk',sans-serif;letter-spacing:-1.2px;margin:0 0 16px}
+.itext{color:#aaa6c4;font-size:clamp(14px,2.6vw,17px);line-height:1.7;max-width:520px;margin:0 auto}
+.fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%;max-width:560px;margin-top:26px;text-align:left}
+.fcard{border:1px solid rgba(164,145,255,.22);background:rgba(22,20,46,.72);border-radius:16px;padding:16px;backdrop-filter:blur(6px)}
+.fcard i{font-style:normal;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,rgba(165,107,255,.35),rgba(56,108,255,.3));color:#cdb9ff;margin-bottom:10px;font-size:16px}
+.fcard b{display:block;font-size:14px;margin-bottom:4px}.fcard span{font-size:12px;color:#9a96b6;line-height:1.5;display:block}
+.demo{width:100%;max-width:520px;margin-top:26px;border:1px solid rgba(164,145,255,.22);background:rgba(16,16,34,.8);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px;text-align:left;min-height:188px;box-shadow:0 20px 70px #0008}
+.demo .b{font-size:13px;line-height:1.6;padding:11px 14px;border-radius:14px;max-width:86%;opacity:0;transform:translateY(10px);transition:.4s}
+.demo .b.on{opacity:1;transform:none}
+.demo .u{align-self:flex-end;background:linear-gradient(120deg,rgba(119,78,211,.4),rgba(49,93,190,.3));border-radius:14px 4px 14px 14px}
+.demo .a{align-self:flex-start;background:#171730;border:1px solid rgba(164,145,255,.18);border-radius:4px 14px 14px 14px;color:#e9e6f4}
+.demo .t{align-self:flex-start;display:none;gap:5px;padding:12px 14px;background:#171730;border-radius:4px 14px 14px 14px}
+.demo .t.on{display:flex}.demo .t i{width:7px;height:7px;border-radius:50%;background:#a987ff;animation:dot 1s infinite}.demo .t i:nth-child(2){animation-delay:.15s}.demo .t i:nth-child(3){animation-delay:.3s}
+@keyframes dot{40%{transform:translateY(-5px);opacity:.5}}
+.demolabel{font-size:11px;letter-spacing:2px;color:#77738f;margin-top:12px}
+.shield{width:84px;height:84px;border-radius:28px;display:grid;place-items:center;font-size:38px;background:linear-gradient(145deg,rgba(165,107,255,.3),rgba(56,108,255,.25));border:1px solid rgba(170,140,255,.4);margin-bottom:26px;box-shadow:0 0 60px rgba(119,83,255,.35)}
+.credit{margin-top:22px;font-size:12px;color:#8581a3;letter-spacing:.4px}.credit b{color:#c4b5ff;font-weight:600}
+.introbar{position:relative;z-index:4;width:100%;display:flex;flex-direction:column;align-items:center;gap:20px}
+.dots{display:flex;gap:8px}
+.dot{width:34px;height:5px;border-radius:5px;background:rgba(255,255,255,.14);border:0;padding:0;overflow:hidden;position:relative}
+.dot i{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#a56bff,#5b8dff);border-radius:5px}
+.dot.done i{width:100%}
+.dot.active i{animation:dotfill var(--t,5s) linear forwards}
+.dot.active.last i{animation:none;width:100%}
+.intro.paused .dot.active i{animation-play-state:paused}
+@keyframes dotfill{from{width:0}to{width:100%}}
+.inext{border:0;color:#fff;font-weight:600;font-size:15px;padding:14px 34px;border-radius:14px;background:linear-gradient(110deg,#9b66ff,#4b85ff);box-shadow:0 8px 30px rgba(119,83,255,.45);transition:.2s}
+.inext:hover,.inext:focus-visible{transform:translateY(-2px);box-shadow:0 12px 38px rgba(119,83,255,.6);outline:0}
+.intro.islast .inext{animation:pulsebtn 1.8s ease-in-out infinite}
+@keyframes pulsebtn{50%{box-shadow:0 8px 46px rgba(119,83,255,.85)}}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr 1fr;gap:9px}.fcard{padding:12px}.fcard span{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.intro *,.intro *::before,.intro *::after{animation:none!important;transition:none!important}.slide.active .r,.slide.active .word span,.slide.active .biglogo{opacity:1}}
+/* ===== Robot guide + langues ===== */
+.intro{justify-content:flex-start}
+.stage{flex:1;min-height:0;margin-top:44px}
+.introbar{position:relative;bottom:auto;width:100%;padding:6px 0 max(24px,env(safe-area-inset-bottom))}
+.intro.s0 .introbar{visibility:hidden}
+.dots{direction:ltr}.dot[hidden]{display:none}
+.dot.active.manual i{animation:none}
+.intro.speaking .dot.active i{animation-play-state:paused}
+.gvoice{position:absolute;top:max(18px,env(safe-area-inset-top));inset-inline-start:18px;z-index:5;width:42px;height:42px;border-radius:50%;border:1px solid rgba(180,160,255,.28);background:rgba(255,255,255,.07);color:#fff;font-size:17px;backdrop-filter:blur(8px);transition:.2s}
+.gvoice:hover,.gvoice:focus-visible{background:rgba(155,108,255,.25);border-color:#a987ff;outline:0}
+.gvoice[aria-pressed=true]{background:rgba(155,108,255,.4);border-color:#a987ff}
+.intro.s0 .gvoice{display:none}
+.guide{position:relative;z-index:4;display:flex;align-items:flex-end;gap:12px;width:min(640px,100%);padding:0 2px 4px}
+.intro.s0 .guide{display:none}
+.gbot{width:64px;flex:0 0 64px}
+.gbubble{position:relative;flex:1;min-height:96px;display:flex;align-items:center;background:#1b1840;border:1px solid rgba(170,140,255,.38);border-radius:18px;padding:14px 18px;font-size:14.5px;line-height:1.6;color:#ece8ff;cursor:pointer;margin-bottom:12px;text-align:start;box-shadow:0 10px 40px #0007}
+.gbubble::before{content:"";position:absolute;bottom:22px;left:-7px;width:12px;height:12px;background:#1b1840;border-left:1px solid rgba(170,140,255,.38);border-bottom:1px solid rgba(170,140,255,.38);transform:rotate(45deg)}
+.intro[dir=rtl] .gbubble::before{left:auto;right:-7px;border-left:0;border-bottom:1px solid rgba(170,140,255,.38);border-right:1px solid rgba(170,140,255,.38);transform:rotate(-45deg)}
+.bot{width:100%;height:auto;display:block;overflow:visible}
+.botslot{animation:botfloat 3.6s ease-in-out infinite}
+@keyframes botfloat{50%{transform:translateY(-6px)}}
+.bigbot{width:150px;margin-bottom:20px;filter:drop-shadow(0 0 34px rgba(119,83,255,.5))}
+.slide.active .bigbot{animation:botin .9s cubic-bezier(.2,1.3,.3,1) both,botfloat 3.6s ease-in-out .9s infinite}
+@keyframes botin{from{opacity:0;transform:translateY(40px) scale(.5)}to{opacity:1;transform:none}}
+.bot .eye{transform-box:fill-box;transform-origin:center;animation:blink 4.2s infinite}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.08)}}
+.bot .ant{animation:antglow 1.6s ease-in-out infinite}
+@keyframes antglow{50%{opacity:.3}}
+.bot .chest{animation:antglow 2.2s ease-in-out infinite}
+.bot .mo{display:none;transform-box:fill-box;transform-origin:center}
+.intro.talking .bot .mo{display:block;animation:talk .26s ease-in-out infinite alternate}
+.intro.talking .bot .ms{display:none}
+@keyframes talk{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
+.bot .arm{transform-box:fill-box;transform-origin:50% 8%}
+.wave .arm{animation:wave .55s ease-in-out .9s 6 alternate both}
+@keyframes wave{from{transform:rotate(-120deg)}to{transform:rotate(-155deg)}}
+.bub0{font:600 clamp(20px,4.6vw,30px) 'Space Grotesk',sans-serif;letter-spacing:-.4px;margin-bottom:8px}
+.langq{color:#a9a5c4;font-size:14px;margin:0 0 14px}
+.langs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:600px;max-height:min(30vh,230px);overflow-y:auto;padding:6px 4px;scrollbar-width:thin;scrollbar-color:#5a43a8 transparent}.langs.empty::after{content:'—';color:#77738f}.langsearch{width:min(320px,86vw);background:rgba(10,9,26,.85);border:1px solid rgba(164,145,255,.3);border-radius:12px;padding:11px 14px;color:#fff;font-size:14px;margin:0 0 10px;outline:0}.langsearch:focus{border-color:#a987ff}.langsearch::placeholder{color:#77738f}
+.lang{border:1px solid rgba(164,145,255,.32);background:rgba(24,21,50,.85);color:#f1edff;padding:10px 16px;border-radius:14px;font-size:15px;font-weight:500;transition:.2s}
+.lang:hover,.lang:focus-visible,.lang.sel{border-color:#a987ff;background:rgba(143,104,255,.28);transform:translateY(-2px);outline:0;box-shadow:0 8px 24px rgba(119,83,255,.35)}
+.intro[dir=rtl] .fcard{text-align:right}
+@media(max-width:560px){.gbubble{font-size:13.5px;min-height:112px;padding:12px 14px}.gbot{width:56px;flex-basis:56px}.bigbot{width:128px}.stage{margin-top:36px}.ititle{font-size:clamp(26px,8vw,36px)}}
+@media(max-height:640px){.bigbot{width:96px;margin-bottom:10px}.gbubble{min-height:84px}.stage{margin-top:30px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">B</div><div><div class="brandname">BRYSS <span>AI</span></div><div class="tagline">INTELLIGENCE REIMAGINED</div></div></div>
+  <button class="newchat" id="newChat">＋ &nbsp; Nouvelle conversation</button>
+  <div class="navlabel">ESPACE DE TRAVAIL</div>
+  <div class="navitem active"><span class="ico">✧</span> Assistant IA</div>
+  <div class="navitem" id="filesNav"><span class="ico">▤</span> Mes fichiers</div>
+  <div class="navitem" id="historyNav"><span class="ico">◷</span> Historique</div>
+  <div class="navlabel">RÉCENT</div>
+  <div class="history" id="history"><button>Aucune conversation</button></div>
+  <div class="sidebottom">
+    <div class="navitem" id="settingsBtn"><span class="ico">⚙</span> Paramètres</div>
+    <div class="profile"><div class="avatar">B</div><div><strong style="font-size:12px">BRYSS AI</strong><small>Créé par Issam Akdi</small></div></div>
+  </div>
+</aside>
+<main class="main">
+  <header class="topbar"><div style="display:flex;align-items:center;gap:12px"><button class="iconbtn mobilemenu" id="menuBtn">☰</button><div class="model"><span class="pulse"></span> BRYSS Assistant <span style="color:#77738e;font-weight:400">· Démo</span></div></div><div class="topactions"><button class="iconbtn" id="themeBtn" title="Changer le thème">☼</button><button class="iconbtn" id="exportBtn" title="Exporter la conversation">⇩</button></div></header>
+  <section class="content">
+    <div class="welcome" id="welcome">
+      <div class="orb">B</div>
+      <h1>Bienvenue sur <span class="gradient">BRYSS AI</span></h1>
+      <p>Une nouvelle façon de réfléchir, créer et avancer. Posez vos questions, explorez vos idées et donnez vie à vos projets.</p>
+      <div class="suggestions">
+        <button class="suggestion" data-prompt="Aide-moi à organiser ma semaine efficacement."><b>◷ Organiser ma journée</b>Construire un planning clair et réaliste.</button>
+        <button class="suggestion" data-prompt="Explique-moi un sujet complexe simplement, avec des exemples."><b>✧ Comprendre un sujet</b>Des explications simples et précises.</button>
+        <button class="suggestion" data-prompt="Aide-moi à trouver une idée de projet et à la développer."><b>⌁ Créer un projet</b>Transformer une idée en plan d'action.</button>
+        <button class="suggestion" data-prompt="Écris un petit programme HTML, CSS et JavaScript pour commencer."><b>⌘ Coder avec BRYSS</b>Construire et améliorer du code.</button>
+      </div>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div class="composer-wrap"><div class="composer"><textarea id="prompt" placeholder="Écrivez votre message à BRYSS AI..." rows="2"></textarea><div class="composebottom"><div class="tools"><button class="toolbtn" id="attachBtn">＋ Joindre</button><button class="toolbtn" id="voiceBtn">◉ Voix</button><input id="fileInput" type="file" hidden multiple></div><button class="send" id="sendBtn" title="Envoyer">↑</button></div></div><div class="hint">BRYSS AI peut faire des erreurs. Vérifiez les informations importantes.</div></div>
+  </section>
+</main>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- Animation de bienvenue : robot guide + choix de langue, affichée une seule fois -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="bgA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b58bff"/><stop offset="1" stop-color="#4a7dff"/></linearGradient></defs></svg>
+<div class="intro s0" id="intro" role="dialog" aria-modal="true" aria-label="BRYSS AI">
+  <canvas id="introFx" aria-hidden="true"></canvas>
+  <div class="introglow" aria-hidden="true"></div>
+  <button class="gvoice" id="gVoice" type="button" aria-pressed="false" title="Voix / Voice">🔇</button>
+  <button class="skip" id="introSkip" type="button">Passer ›</button>
+  <div class="stage">
+    <section class="slide" id="langSlide">
+      <div class="bigbot botslot wave"></div>
+      <div class="bub0 r" style="--d:600">👋 Hello · Bonjour · Hola · مرحبا · 你好 · नमस्ते</div>
+      <p class="langq r" style="--d:900">Choisis ta langue · Choose your language · 选择语言</p>
+      <input class="langsearch r" id="langSearch" type="search" style="--d:1050" placeholder="🔍  Search · Rechercher · بحث…" aria-label="Search language" autocomplete="off">
+      <div class="langs r" id="langs" style="--d:1250" role="group" aria-label="Langue / Language"></div>
+    </section>
+    <section class="slide" data-t="4200">
+      <div class="biglogo">B</div>
+      <div class="word" aria-label="BRYSS AI"><span style="--i:0">B</span><span style="--i:1">R</span><span style="--i:2">Y</span><span style="--i:3">S</span><span style="--i:4">S</span><span class="ai" style="--i:6">AI</span></div>
+      <div class="tag r" style="--d:1900">INTELLIGENCE REIMAGINED</div>
+    </section>
+    <section class="slide" data-t="5200">
+      <h2 class="ititle r" style="--d:100"><span data-i="t2a"></span><br><span class="gradient" data-i="t2b"></span></h2>
+    </section>
+    <section class="slide" data-t="6000">
+      <h2 class="ititle r" style="--d:50" data-i="t3"></h2>
+      <div class="fgrid">
+        <div class="fcard r" style="--d:300"><i>✧</i><b data-i="c1t"></b><span data-i="c1d"></span></div>
+        <div class="fcard r" style="--d:480"><i>⌘</i><b data-i="c2t"></b><span data-i="c2d"></span></div>
+        <div class="fcard r" style="--d:660"><i>◉</i><b data-i="c3t"></b><span data-i="c3d"></span></div>
+        <div class="fcard r" style="--d:840"><i>▤</i><b data-i="c4t"></b><span data-i="c4d"></span></div>
+      </div>
+    </section>
+    <section class="slide" data-t="7600">
+      <h2 class="ititle r" style="--d:50" data-i="t4"></h2>
+      <div class="demo r" style="--d:300" aria-hidden="true">
+        <div class="b u" id="demoUser"></div>
+        <div class="b t" id="demoTyping"><i></i><i></i><i></i></div>
+        <div class="b a" id="demoBot"></div>
+      </div>
+      <div class="demolabel r" style="--d:600" data-i="ex"></div>
+    </section>
+    <section class="slide">
+      <div class="shield r" style="--d:50">🔒</div>
+      <h2 class="ititle r" style="--d:250"><span data-i="t5a"></span><br><span class="gradient" data-i="t5b"></span></h2>
+      <div class="credit r" style="--d:700"><span data-i="by"></span> <b>Issam Akdi</b></div>
+    </section>
+  </div>
+  <div class="guide" id="guide">
+    <div class="gbot botslot"></div>
+    <div class="gbubble" id="gbubble" aria-live="polite"><span id="gtext"></span></div>
+  </div>
+  <div class="introbar">
+    <div class="dots" id="introDots" role="tablist"></div>
+    <button class="inext" id="introNext" type="button">Suivant</button>
+  </div>
+</div>
+
+<div class="modalback" id="modalback"><div class="modal"><h2>Paramètres</h2><p>Personnalisez votre espace BRYSS AI. Cette première version conserve vos préférences dans ce navigateur.</p><label style="font-size:12px;color:#aaa">Langue de l'interface</label><select id="language" style="width:100%;background:#090916;color:white;border:1px solid var(--line);padding:11px;border-radius:10px;margin-top:7px"><option value="fr">Français</option><option value="en">English</option><option value="nl">Nederlands</option><option value="es">Español</option><option value="ar">العربية</option></select><p style="margin-top:18px">Connexion IA : pour obtenir des réponses générées par un vrai modèle, configurez le serveur avec votre clé API. Ne placez jamais cette clé dans le navigateur.</p><button id="replayIntro" type="button" style="width:100%;margin-top:6px;padding:11px;border-radius:10px;border:1px solid var(--line);background:transparent;color:#cfc7ed">▶ Revoir la présentation</button><button class="primary" id="closeModal">Terminer</button><p style="text-align:center;font-size:11px;margin:14px 0 0;color:#6d6987">BRYSS AI · Créé par Issam Akdi</p></div></div>
+<script>
+function getLang(){try{return localStorage.getItem('bryss_lang')||'fr'}catch(e){return 'fr'}}
+const $=s=>document.querySelector(s), chat=$('#chat'), promptBox=$('#prompt');
+let messages=[], attached=[];
+function toast(t){const el=$('#toast');el.textContent=t;el.style.display='block';setTimeout(()=>el.style.display='none',2600)}
+function addMessage(role,text){const m=document.createElement('div');m.className='message '+role;const a=document.createElement('div');a.className='msgavatar';a.textContent=role==='user'?'VO':'B';const b=document.createElement('div');b.className='bubble';b.textContent=text;m.append(a,b);chat.append(m);chat.scrollTop=chat.scrollHeight;messages.push({role,text});saveHistory();return m}
+function saveHistory(){try{localStorage.setItem('bryss_messages',JSON.stringify(messages));refreshHistory()}catch(e){}}
+function refreshHistory(){let h=$('#history');h.innerHTML='';let label=messages.find(x=>x.role==='user')?.text||'Aucune conversation';let btn=document.createElement('button');btn.textContent=label.slice(0,34);btn.onclick=()=>toast('Conversation actuelle');h.append(btn)}
+function showWelcome(){ $('#welcome').style.display=messages.length?'none':'block'; }
+function demoReply(q){let lower=q.toLowerCase();if(/bonjour|salut|hello|hey/.test(lower))return "Bonjour ! Ravi de vous retrouver sur BRYSS AI. Que pouvons-nous accomplir aujourd'hui ?";if(/html|css|javascript|code|programm/.test(lower))return "Avec plaisir ! Je peux vous aider à concevoir la structure, le style et la logique de votre projet. Dans cette version de démonstration, les réponses sont locales. Connectez le serveur IA pour obtenir une véritable génération de code.";if(/semaine|planning|journée|organiser/.test(lower))return "Pour commencer, notez vos 3 priorités principales. Bloquez ensuite les rendez-vous fixes, répartissez les tâches importantes sur des créneaux réalistes et gardez une marge pour les imprévus. Si vous me donnez vos contraintes, je peux vous proposer un planning.";return "Merci pour votre message ! BRYSS AI est actuellement en mode aperçu : l'interface, l'historique local et les outils de base sont prêts, mais le moteur IA n'est pas encore connecté.\n\nPour activer les vraies réponses, lancez le serveur inclus dans le projet et ajoutez votre clé API dans le fichier .env. Consultez le README pour les étapes."}
+async function send(){let q=promptBox.value.trim();if(!q&&!attached.length)return;$('#welcome').style.display='none';if(attached.length)q+=(q?'\n':'')+'Fichiers joints : '+attached.map(f=>f.name).join(', ');addMessage('user',q);promptBox.value='';promptBox.style.height='auto';attached=[];let typing=document.createElement('div');typing.className='typing';typing.textContent='BRYSS réfléchit…';chat.append(typing);chat.scrollTop=chat.scrollHeight;
+ try{const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:messages.slice(-20)})});if(res.ok){const data=await res.json();typing.remove();addMessage('assistant',data.reply||'Je n’ai pas reçu de réponse.');return}}catch(e){}
+ await new Promise(r=>setTimeout(r,650));typing.remove();addMessage('assistant',demoReply(q));}
+$('#sendBtn').onclick=send;promptBox.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});promptBox.addEventListener('input',()=>{promptBox.style.height='auto';promptBox.style.height=Math.min(promptBox.scrollHeight,150)+'px'});
+$('#newChat').onclick=()=>{messages=[];chat.innerHTML='';$('#welcome').style.display='block';localStorage.removeItem('bryss_messages');refreshHistory();$('#sidebar').classList.remove('open')};
+document.querySelectorAll('[data-prompt]').forEach(b=>b.onclick=()=>{promptBox.value=b.dataset.prompt;send()});
+$('#attachBtn').onclick=()=>$('#fileInput').click();$('#fileInput').onchange=e=>{attached=[...e.target.files];toast(attached.length+' fichier(s) sélectionné(s) — aperçu uniquement');};
+$('#voiceBtn').onclick=()=>{let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast('La dictée vocale n’est pas disponible sur ce navigateur.');return}let r=new SR();r.lang=(window.BRYSS_VOICE||{})[getLang()]||'fr-FR';r.onresult=e=>{promptBox.value+=(promptBox.value?' ':'')+e.results[0][0].transcript};r.start();toast('Écoute en cours…')};
+$('#themeBtn').onclick=()=>{document.body.classList.toggle('light');if(document.body.classList.contains('light')){document.documentElement.style.setProperty('--bg','#f4f2fb');document.documentElement.style.setProperty('--text','#17142a');document.documentElement.style.setProperty('--panel','#fff');document.documentElement.style.setProperty('--muted','#625e78');toast('Thème clair activé')}else{location.reload()}};
+$('#settingsBtn').onclick=()=>$('#modalback').style.display='grid';$('#closeModal').onclick=()=>$('#modalback').style.display='none';$('#modalback').onclick=e=>{if(e.target.id==='modalback')$('#modalback').style.display='none'};
+$('#menuBtn').onclick=()=>$('#sidebar').classList.toggle('open');$('#historyNav').onclick=()=>toast('Votre historique est conservé sur cet appareil.');$('#filesNav').onclick=()=>toast('La gestion avancée des fichiers sera ajoutée dans une prochaine version.');
+$('#exportBtn').onclick=()=>{if(!messages.length){toast('Aucune conversation à exporter.');return}let blob=new Blob([messages.map(m=>(m.role==='user'?'Vous':'BRYSS AI')+' :\n'+m.text).join('\n\n')],{type:'text/plain'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='conversation-bryss-ai.txt';a.click();URL.revokeObjectURL(a.href)};
+try{messages=JSON.parse(localStorage.getItem('bryss_messages')||'[]');messages.forEach(m=>{let el=document.createElement('div');el.className='message '+m.role;let a=document.createElement('div');a.className='msgavatar';a.textContent=m.role==='user'?'VO':'B';let b=document.createElement('div');b.className='bubble';b.textContent=m.text;el.append(a,b);chat.append(el)});showWelcome();refreshHistory()}catch(e){}
+
+// installable + hors-ligne (uniquement en https ou localhost)
+if('serviceWorker' in navigator&&/^https:|^http:\/\/localhost/.test(location.href)){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+
+/* ===== Animation de bienvenue : robot guide, choix de langue, une seule fois, skippable ===== */
+(()=>{
+const KEY='bryss_intro_done_v1', LKEY='bryss_lang', intro=document.getElementById('intro');
+if(!intro)return;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches, TYPE=19;
+const META=[["fr", "Français", "French", "fr-FR"], ["en", "English", "English", "en-US"], ["nl", "Nederlands", "Dutch", "nl-NL"], ["es", "Español", "Spanish", "es-ES"], ["ar", "العربية", "Arabic", "ar-SA"], ["pt", "Português", "Portuguese", "pt-BR"], ["de", "Deutsch", "German", "de-DE"], ["it", "Italiano", "Italian", "it-IT"], ["tr", "Türkçe", "Turkish", "tr-TR"], ["ru", "Русский", "Russian", "ru-RU"], ["uk", "Українська", "Ukrainian", "uk-UA"], ["pl", "Polski", "Polish", "pl-PL"], ["zh", "中文", "Chinese", "zh-CN"], ["ja", "日本語", "Japanese", "ja-JP"], ["ko", "한국어", "Korean", "ko-KR"], ["hi", "हिन्दी", "Hindi", "hi-IN"], ["bn", "বাংলা", "Bengali", "bn-BD"], ["ur", "اردو", "Urdu", "ur-PK"], ["fa", "فارسی", "Persian", "fa-IR"], ["id", "Bahasa Indonesia", "Indonesian", "id-ID"], ["vi", "Tiếng Việt", "Vietnamese", "vi-VN"], ["th", "ไทย", "Thai", "th-TH"], ["sv", "Svenska", "Swedish", "sv-SE"], ["el", "Ελληνικά", "Greek", "el-GR"], ["he", "עברית", "Hebrew", "he-IL"], ["ro", "Română", "Romanian", "ro-RO"], ["cs", "Čeština", "Czech", "cs-CZ"], ["hu", "Magyar", "Hungarian", "hu-HU"], ["sw", "Kiswahili", "Swahili", "sw-KE"]];
+const RTL=new Set(["ar","fa","ur","he"]);const LANGS=Object.fromEntries(META.map(m=>[m[0],m[3]]));window.BRYSS_VOICE=LANGS;
+
+const T={
+fr:{say:["Salut ! Moi c'est Bry, je vais te faire visiter BRYSS AI en quelques secondes.","BRYSS AI est ton assistant personnel : il t'aide à réfléchir, créer et avancer sur tes projets, dans ta langue.","Tu peux lui poser des questions, coder avec lui, lui dicter tes messages à la voix et joindre tes fichiers.","C'est aussi simple qu'une conversation : tu écris, il répond. Voici un exemple !","Tes conversations restent sur ton appareil. Tu peux les exporter ou repartir de zéro quand tu veux. À toi de jouer !"],
+ t2a:"Ton intelligence,",t2b:"sans limites.",t3:"Ce que tu peux faire",c1t:"Poser des questions",c1d:"Des réponses claires et des idées.",c2t:"Coder",c2d:"Construire et améliorer tes projets.",c3t:"Dicter à la voix",c3d:"Tu parles, BRYSS AI écrit.",c4t:"Joindre des fichiers",c4d:"Ajoute tes documents.",t4:"Simple comme une conversation",t5a:"Tes conversations",t5b:"restent chez toi.",du:"Aide-moi à organiser ma semaine.",dr:"Bien sûr ! Commençons par tes 3 priorités, puis je place les créneaux et garde une marge pour les imprévus.",ex:"EXEMPLE",next:"Suivant",start:"Commencer",skip:"Passer ›",by:"Créé par",vo:"Activer la voix"},
+en:{say:["Hi! I'm Bry. I'll give you a quick tour of BRYSS AI.","BRYSS AI is your personal assistant: it helps you think, create and move your projects forward, in your own language.","You can ask it questions, code with it, dictate messages with your voice and attach your files.","It's as simple as a conversation: you write, it answers. Here's an example!","Your conversations stay on your device. You can export them or start fresh whenever you like. Over to you!"],
+ t2a:"Your intelligence,",t2b:"without limits.",t3:"What you can do",c1t:"Ask questions",c1d:"Clear answers and ideas.",c2t:"Code",c2d:"Build and improve your projects.",c3t:"Dictate by voice",c3d:"You speak, BRYSS AI types.",c4t:"Attach files",c4d:"Add your documents.",t4:"Simple as a conversation",t5a:"Your conversations",t5b:"stay with you.",du:"Help me plan my week.",dr:"Of course! Let's start with your 3 priorities, then I'll block the time slots and keep a buffer for surprises.",ex:"EXAMPLE",next:"Next",start:"Get started",skip:"Skip ›",by:"Created by",vo:"Turn voice on"},
+nl:{say:["Hoi! Ik ben Bry. Ik geef je in een paar seconden een rondleiding door BRYSS AI.","BRYSS AI is je persoonlijke assistent: hij helpt je nadenken, creëren en vooruitgaan met je projecten, in je eigen taal.","Je kunt hem vragen stellen, samen programmeren, je berichten inspreken en bestanden toevoegen.","Het is zo simpel als een gesprek: jij schrijft, hij antwoordt. Hier is een voorbeeld!","Je gesprekken blijven op je apparaat. Je kunt ze exporteren of opnieuw beginnen wanneer je wilt. Aan jou!"],
+ t2a:"Jouw intelligentie,",t2b:"zonder grenzen.",t3:"Wat je kunt doen",c1t:"Vragen stellen",c1d:"Duidelijke antwoorden en ideeën.",c2t:"Programmeren",c2d:"Bouw en verbeter je projecten.",c3t:"Inspreken",c3d:"Jij praat, BRYSS AI typt.",c4t:"Bestanden toevoegen",c4d:"Voeg je documenten toe.",t4:"Simpel als een gesprek",t5a:"Je gesprekken",t5b:"blijven bij jou.",du:"Help me mijn week te plannen.",dr:"Natuurlijk! We beginnen met je 3 prioriteiten, daarna plan ik de tijdsblokken en laat ik ruimte voor onverwachte dingen.",ex:"VOORBEELD",next:"Volgende",start:"Beginnen",skip:"Overslaan ›",by:"Gemaakt door",vo:"Stem aanzetten"},
+es:{say:["¡Hola! Soy Bry. Te haré un recorrido rápido por BRYSS AI.","BRYSS AI es tu asistente personal: te ayuda a pensar, crear y avanzar en tus proyectos, en tu idioma.","Puedes hacerle preguntas, programar con él, dictarle mensajes con la voz y adjuntar tus archivos.","Es tan sencillo como una conversación: tú escribes, él responde. ¡Mira un ejemplo!","Tus conversaciones se quedan en tu dispositivo. Puedes exportarlas o empezar de cero cuando quieras. ¡Te toca!"],
+ t2a:"Tu inteligencia,",t2b:"sin límites.",t3:"Lo que puedes hacer",c1t:"Hacer preguntas",c1d:"Respuestas claras e ideas.",c2t:"Programar",c2d:"Crea y mejora tus proyectos.",c3t:"Dictar por voz",c3d:"Hablas, BRYSS AI escribe.",c4t:"Adjuntar archivos",c4d:"Añade tus documentos.",t4:"Simple como una conversación",t5a:"Tus conversaciones",t5b:"se quedan contigo.",du:"Ayúdame a organizar mi semana.",dr:"¡Claro! Empecemos por tus 3 prioridades, luego coloco los horarios y dejo margen para imprevistos.",ex:"EJEMPLO",next:"Siguiente",start:"Empezar",skip:"Omitir ›",by:"Creado por",vo:"Activar la voz"},
+ar:{say:["مرحباً! أنا بري. سآخذك في جولة سريعة داخل BRYSS AI.","BRYSS AI هو مساعدك الشخصي: يساعدك على التفكير والإبداع وتطوير مشاريعك بلغتك.","يمكنك طرح الأسئلة عليه، والبرمجة معه، وإملاء رسائلك بصوتك، وإرفاق ملفاتك.","الأمر بسيط كأي محادثة: أنت تكتب وهو يجيب. إليك مثالاً!","تبقى محادثاتك على جهازك. يمكنك تصديرها أو البدء من جديد متى شئت. دورك الآن!"],
+ t2a:"ذكاؤك،",t2b:"بلا حدود.",t3:"ما يمكنك فعله",c1t:"طرح الأسئلة",c1d:"إجابات واضحة وأفكار.",c2t:"البرمجة",c2d:"ابنِ مشاريعك وطوّرها.",c3t:"الإملاء الصوتي",c3d:"تتحدث وBRYSS AI يكتب.",c4t:"إرفاق الملفات",c4d:"أضف مستنداتك.",t4:"بسيط كأي محادثة",t5a:"محادثاتك",t5b:"تبقى معك.",du:"ساعدني في تنظيم أسبوعي.",dr:"بالتأكيد! لنبدأ بأولوياتك الثلاث، ثم أوزّع المواعيد وأترك هامشاً للطوارئ.",ex:"مثال",next:"التالي",start:"ابدأ",skip:"تخطي",by:"من إنشاء",vo:"تشغيل الصوت"}
+};
+Object.assign(T,{"pt": {"say": ["Olá! Eu sou o Bry. Vou te mostrar o BRYSS AI em poucos segundos.", "O BRYSS AI é o seu assistente pessoal: ajuda você a pensar, criar e avançar nos seus projetos, no seu idioma.", "Você pode fazer perguntas, programar com ele, ditar mensagens por voz e anexar arquivos.", "É simples como uma conversa: você escreve, ele responde. Veja um exemplo!", "Suas conversas ficam no seu dispositivo. Você pode exportá-las ou recomeçar quando quiser. Sua vez!"], "t2a": "Sua inteligência,", "t2b": "sem limites.", "t3": "O que você pode fazer", "c1t": "Fazer perguntas", "c1d": "Respostas claras e ideias.", "c2t": "Programar", "c2d": "Crie e melhore seus projetos.", "c3t": "Ditar por voz", "c3d": "Você fala, o BRYSS AI escreve.", "c4t": "Anexar arquivos", "c4d": "Adicione seus documentos.", "t4": "Simples como uma conversa", "t5a": "Suas conversas", "t5b": "ficam com você.", "du": "Ajude-me a organizar minha semana.", "dr": "Claro! Vamos começar pelas suas 3 prioridades, depois organizo os horários e deixo uma margem para imprevistos.", "ex": "EXEMPLO", "next": "Próximo", "start": "Começar", "skip": "Pular ›", "by": "Criado por", "vo": "Ativar voz"}, "de": {"say": ["Hallo! Ich bin Bry. Ich zeige dir BRYSS AI in wenigen Sekunden.", "BRYSS AI ist dein persönlicher Assistent: Er hilft dir beim Denken, Gestalten und Vorankommen mit deinen Projekten – in deiner Sprache.", "Du kannst ihm Fragen stellen, mit ihm programmieren, Nachrichten per Sprache diktieren und Dateien anhängen.", "So einfach wie ein Gespräch: Du schreibst, er antwortet. Hier ein Beispiel!", "Deine Gespräche bleiben auf deinem Gerät. Du kannst sie exportieren oder jederzeit neu starten. Du bist dran!"], "t2a": "Deine Intelligenz,", "t2b": "ohne Grenzen.", "t3": "Was du tun kannst", "c1t": "Fragen stellen", "c1d": "Klare Antworten und Ideen.", "c2t": "Programmieren", "c2d": "Projekte bauen und verbessern.", "c3t": "Per Sprache diktieren", "c3d": "Du sprichst, BRYSS AI schreibt.", "c4t": "Dateien anhängen", "c4d": "Füge deine Dokumente hinzu.", "t4": "Einfach wie ein Gespräch", "t5a": "Deine Gespräche", "t5b": "bleiben bei dir.", "du": "Hilf mir, meine Woche zu planen.", "dr": "Gern! Wir beginnen mit deinen 3 Prioritäten, dann plane ich die Zeitfenster und lasse Puffer für Unvorhergesehenes.", "ex": "BEISPIEL", "next": "Weiter", "start": "Los geht's", "skip": "Überspringen ›", "by": "Erstellt von", "vo": "Stimme einschalten"}, "it": {"say": ["Ciao! Sono Bry. Ti faccio scoprire BRYSS AI in pochi secondi.", "BRYSS AI è il tuo assistente personale: ti aiuta a pensare, creare e far avanzare i tuoi progetti, nella tua lingua.", "Puoi fargli domande, programmare con lui, dettargli messaggi a voce e allegare i tuoi file.", "È semplice come una conversazione: tu scrivi, lui risponde. Ecco un esempio!", "Le tue conversazioni restano sul tuo dispositivo. Puoi esportarle o ricominciare quando vuoi. Tocca a te!"], "t2a": "La tua intelligenza,", "t2b": "senza limiti.", "t3": "Cosa puoi fare", "c1t": "Fare domande", "c1d": "Risposte chiare e idee.", "c2t": "Programmare", "c2d": "Crea e migliora i tuoi progetti.", "c3t": "Dettare a voce", "c3d": "Tu parli, BRYSS AI scrive.", "c4t": "Allegare file", "c4d": "Aggiungi i tuoi documenti.", "t4": "Semplice come una conversazione", "t5a": "Le tue conversazioni", "t5b": "restano con te.", "du": "Aiutami a organizzare la mia settimana.", "dr": "Certo! Partiamo dalle tue 3 priorità, poi inserisco gli orari e lascio un margine per gli imprevisti.", "ex": "ESEMPIO", "next": "Avanti", "start": "Inizia", "skip": "Salta ›", "by": "Creato da", "vo": "Attiva la voce"}, "tr": {"say": ["Merhaba! Ben Bry. Sana BRYSS AI'yi birkaç saniyede tanıtacağım.", "BRYSS AI kişisel asistanın: düşünmene, üretmene ve projelerinde ilerlemene kendi dilinde yardımcı olur.", "Ona soru sorabilir, birlikte kod yazabilir, mesajlarını sesle yazdırabilir ve dosyalarını ekleyebilirsin.", "Tıpkı bir sohbet kadar basit: sen yazarsın, o cevaplar. İşte bir örnek!", "Sohbetlerin cihazında kalır. İstediğin zaman dışa aktarabilir veya sıfırdan başlayabilirsin. Sıra sende!"], "t2a": "Zekân,", "t2b": "sınırsız.", "t3": "Neler yapabilirsin", "c1t": "Soru sor", "c1d": "Net cevaplar ve fikirler.", "c2t": "Kod yaz", "c2d": "Projelerini geliştir.", "c3t": "Sesle yaz", "c3d": "Sen konuşursun, BRYSS AI yazar.", "c4t": "Dosya ekle", "c4d": "Belgelerini ekle.", "t4": "Bir sohbet kadar basit", "t5a": "Sohbetlerin", "t5b": "sende kalır.", "du": "Haftamı planlamama yardım et.", "dr": "Tabii! Önce 3 önceliğinle başlayalım, sonra saatleri yerleştirip sürprizler için boşluk bırakırım.", "ex": "ÖRNEK", "next": "İleri", "start": "Başla", "skip": "Geç ›", "by": "Geliştiren", "vo": "Sesi aç"}, "ru": {"say": ["Привет! Я Бри. Сейчас за пару секунд покажу тебе BRYSS AI.", "BRYSS AI — твой личный помощник: он помогает думать, создавать и продвигать твои проекты на твоём языке.", "Ты можешь задавать ему вопросы, писать с ним код, диктовать сообщения голосом и прикреплять файлы.", "Всё просто, как в разговоре: ты пишешь, он отвечает. Вот пример!", "Твои разговоры остаются на твоём устройстве. Их можно экспортировать или начать заново в любой момент. Твой ход!"], "t2a": "Твой интеллект", "t2b": "без границ.", "t3": "Что ты можешь", "c1t": "Задавать вопросы", "c1d": "Чёткие ответы и идеи.", "c2t": "Писать код", "c2d": "Создавай и улучшай проекты.", "c3t": "Диктовать голосом", "c3d": "Ты говоришь — BRYSS AI пишет.", "c4t": "Прикреплять файлы", "c4d": "Добавляй свои документы.", "t4": "Просто как разговор", "t5a": "Твои разговоры", "t5b": "остаются с тобой.", "du": "Помоги мне спланировать неделю.", "dr": "Конечно! Начнём с твоих 3 приоритетов, потом я расставлю время и оставлю запас на неожиданности.", "ex": "ПРИМЕР", "next": "Далее", "start": "Начать", "skip": "Пропустить ›", "by": "Автор:", "vo": "Включить голос"}, "uk": {"say": ["Привіт! Я Брі. За кілька секунд покажу тобі BRYSS AI.", "BRYSS AI — твій особистий помічник: він допомагає думати, створювати й просувати твої проєкти твоєю мовою.", "Ти можеш ставити йому запитання, писати з ним код, диктувати повідомлення голосом і додавати файли.", "Усе просто, як у розмові: ти пишеш, він відповідає. Ось приклад!", "Твої розмови залишаються на твоєму пристрої. Їх можна експортувати або почати заново будь-коли. Твоя черга!"], "t2a": "Твій інтелект", "t2b": "без меж.", "t3": "Що ти можеш", "c1t": "Ставити запитання", "c1d": "Чіткі відповіді та ідеї.", "c2t": "Писати код", "c2d": "Створюй і вдосконалюй проєкти.", "c3t": "Диктувати голосом", "c3d": "Ти говориш — BRYSS AI пише.", "c4t": "Додавати файли", "c4d": "Додавай свої документи.", "t4": "Просто як розмова", "t5a": "Твої розмови", "t5b": "залишаються з тобою.", "du": "Допоможи мені спланувати тиждень.", "dr": "Звісно! Почнемо з твоїх 3 пріоритетів, потім я розставлю час і залишу запас на несподіванки.", "ex": "ПРИКЛАД", "next": "Далі", "start": "Почати", "skip": "Пропустити ›", "by": "Створив", "vo": "Увімкнути голос"}, "pl": {"say": ["Cześć! Jestem Bry. Pokażę ci BRYSS AI w kilka sekund.", "BRYSS AI to twój osobisty asystent: pomaga ci myśleć, tworzyć i rozwijać projekty w twoim języku.", "Możesz zadawać mu pytania, programować z nim, dyktować wiadomości głosem i załączać pliki.", "To proste jak rozmowa: ty piszesz, on odpowiada. Oto przykład!", "Twoje rozmowy zostają na twoim urządzeniu. Możesz je wyeksportować lub zacząć od nowa, kiedy chcesz. Twoja kolej!"], "t2a": "Twoja inteligencja,", "t2b": "bez granic.", "t3": "Co możesz zrobić", "c1t": "Zadawać pytania", "c1d": "Jasne odpowiedzi i pomysły.", "c2t": "Programować", "c2d": "Twórz i ulepszaj projekty.", "c3t": "Dyktować głosem", "c3d": "Ty mówisz, BRYSS AI pisze.", "c4t": "Załączać pliki", "c4d": "Dodaj swoje dokumenty.", "t4": "Proste jak rozmowa", "t5a": "Twoje rozmowy", "t5b": "zostają u ciebie.", "du": "Pomóż mi zaplanować tydzień.", "dr": "Jasne! Zacznijmy od twoich 3 priorytetów, potem rozplanuję terminy i zostawię zapas na niespodzianki.", "ex": "PRZYKŁAD", "next": "Dalej", "start": "Zaczynamy", "skip": "Pomiń ›", "by": "Autor:", "vo": "Włącz głos"}, "zh": {"say": ["你好！我是 Bry。几秒钟带你认识 BRYSS AI。", "BRYSS AI 是你的个人助手：用你的语言，帮你思考、创作，推进你的项目。", "你可以向它提问、和它一起写代码、用语音口述消息，还能添加文件。", "就像聊天一样简单：你输入，它回答。来看个例子！", "你的对话保存在你的设备上。随时可以导出，或重新开始。轮到你了！"], "t2a": "你的智慧，", "t2b": "没有极限。", "t3": "你可以做什么", "c1t": "提问", "c1d": "清晰的答案和灵感。", "c2t": "写代码", "c2d": "构建并改进你的项目。", "c3t": "语音输入", "c3d": "你说话，BRYSS AI 来写。", "c4t": "添加文件", "c4d": "加入你的文档。", "t4": "像聊天一样简单", "t5a": "你的对话", "t5b": "只属于你。", "du": "帮我安排一下这周的计划。", "dr": "当然！先从你的 3 个重点开始，然后我来安排时间，并留出应对突发情况的余地。", "ex": "示例", "next": "下一步", "start": "开始", "skip": "跳过 ›", "by": "作者：", "vo": "开启语音"}, "ja": {"say": ["こんにちは！ぼくはブリー。数秒で BRYSS AI を案内するよ。", "BRYSS AI はあなたのパーソナルアシスタント。あなたの言葉で、考えること、作ること、プロジェクトを進めることを手伝います。", "質問したり、一緒にコードを書いたり、声でメッセージを入力したり、ファイルを添付したりできます。", "会話のように簡単：あなたが書くと、AI が答えます。例を見てみましょう！", "会話はあなたの端末に残ります。いつでもエクスポートしたり、最初からやり直したりできます。さあ、あなたの番です！"], "t2a": "あなたの知性に、", "t2b": "限界はない。", "t3": "できること", "c1t": "質問する", "c1d": "わかりやすい答えとアイデア。", "c2t": "コードを書く", "c2d": "プロジェクトを作って改善。", "c3t": "音声入力", "c3d": "話すだけで BRYSS AI が入力。", "c4t": "ファイルを添付", "c4d": "ドキュメントを追加。", "t4": "会話のようにシンプル", "t5a": "あなたの会話は", "t5b": "あなたのもの。", "du": "今週の予定を整理するのを手伝って。", "dr": "もちろん！まず3つの優先事項から始めて、時間を割り振り、予想外の出来事のための余裕も残します。", "ex": "例", "next": "次へ", "start": "はじめる", "skip": "スキップ ›", "by": "作成：", "vo": "音声をオン"}, "ko": {"say": ["안녕하세요! 저는 브리예요. 몇 초 만에 BRYSS AI를 소개해 드릴게요.", "BRYSS AI는 당신의 개인 비서예요. 당신의 언어로 생각하고, 만들고, 프로젝트를 앞으로 나아가게 도와줘요.", "질문을 하고, 함께 코딩하고, 음성으로 메시지를 입력하고, 파일을 첨부할 수 있어요.", "대화처럼 간단해요. 당신이 쓰면 AI가 답해요. 예시를 볼까요!", "대화는 당신의 기기에 남아요. 언제든 내보내거나 새로 시작할 수 있어요. 이제 당신 차례예요!"], "t2a": "당신의 지능,", "t2b": "한계 없이.", "t3": "할 수 있는 일", "c1t": "질문하기", "c1d": "명확한 답변과 아이디어.", "c2t": "코딩", "c2d": "프로젝트를 만들고 개선하세요.", "c3t": "음성 입력", "c3d": "말하면 BRYSS AI가 써요.", "c4t": "파일 첨부", "c4d": "문서를 추가하세요.", "t4": "대화처럼 간단하게", "t5a": "당신의 대화는", "t5b": "당신 곁에 남아요.", "du": "이번 주 일정을 정리하도록 도와줘.", "dr": "물론이죠! 먼저 3가지 우선순위부터 시작하고, 시간대를 배치한 뒤 예상치 못한 일을 위한 여유도 남길게요.", "ex": "예시", "next": "다음", "start": "시작하기", "skip": "건너뛰기 ›", "by": "제작:", "vo": "음성 켜기"}, "hi": {"say": ["नमस्ते! मैं ब्री हूँ। मैं कुछ ही सेकंड में आपको BRYSS AI से मिलवाता हूँ।", "BRYSS AI आपका निजी सहायक है: यह आपकी भाषा में सोचने, बनाने और अपने प्रोजेक्ट आगे बढ़ाने में मदद करता है।", "आप इससे सवाल पूछ सकते हैं, साथ में कोड लिख सकते हैं, आवाज़ से संदेश बोल सकते हैं और फ़ाइलें जोड़ सकते हैं।", "यह बातचीत जितना आसान है: आप लिखते हैं, यह जवाब देता है। यह रहा एक उदाहरण!", "आपकी बातचीत आपके डिवाइस पर ही रहती है। आप कभी भी उसे एक्सपोर्ट कर सकते हैं या नए सिरे से शुरू कर सकते हैं। अब आपकी बारी!"], "t2a": "आपकी बुद्धिमत्ता,", "t2b": "बिना सीमाओं के।", "t3": "आप क्या कर सकते हैं", "c1t": "सवाल पूछें", "c1d": "साफ़ जवाब और नए विचार।", "c2t": "कोडिंग करें", "c2d": "अपने प्रोजेक्ट बनाएँ और सुधारें।", "c3t": "आवाज़ से लिखें", "c3d": "आप बोलें, BRYSS AI लिखे।", "c4t": "फ़ाइलें जोड़ें", "c4d": "अपने दस्तावेज़ जोड़ें।", "t4": "बातचीत जितना आसान", "t5a": "आपकी बातचीत", "t5b": "आपके पास रहती है।", "du": "मेरा हफ़्ता व्यवस्थित करने में मदद करो।", "dr": "ज़रूर! पहले आपकी 3 प्राथमिकताओं से शुरू करते हैं, फिर मैं समय बाँटूँगा और अचानक आने वाले कामों के लिए जगह रखूँगा।", "ex": "उदाहरण", "next": "आगे", "start": "शुरू करें", "skip": "छोड़ें ›", "by": "निर्माता:", "vo": "आवाज़ चालू करें"}, "bn": {"say": ["হ্যালো! আমি ব্রি। কয়েক সেকেন্ডে তোমাকে BRYSS AI দেখিয়ে দিচ্ছি।", "BRYSS AI তোমার ব্যক্তিগত সহকারী: তোমার ভাষায় ভাবতে, তৈরি করতে এবং প্রকল্প এগিয়ে নিতে সাহায্য করে।", "তুমি প্রশ্ন করতে পারো, একসাথে কোড লিখতে পারো, কণ্ঠে বার্তা বলতে পারো এবং ফাইল যুক্ত করতে পারো।", "কথোপকথনের মতোই সহজ: তুমি লেখো, সে উত্তর দেয়। এই দেখো একটি উদাহরণ!", "তোমার কথোপকথন তোমার ডিভাইসেই থাকে। যখন খুশি এক্সপোর্ট করতে বা নতুন করে শুরু করতে পারো। এবার তোমার পালা!"], "t2a": "তোমার বুদ্ধিমত্তা,", "t2b": "সীমাহীন।", "t3": "তুমি কী করতে পারো", "c1t": "প্রশ্ন করো", "c1d": "পরিষ্কার উত্তর ও ধারণা।", "c2t": "কোড করো", "c2d": "তোমার প্রকল্প তৈরি ও উন্নত করো।", "c3t": "কণ্ঠে লেখো", "c3d": "তুমি বলো, BRYSS AI লেখে।", "c4t": "ফাইল যুক্ত করো", "c4d": "তোমার নথি যোগ করো।", "t4": "কথোপকথনের মতোই সহজ", "t5a": "তোমার কথোপকথন", "t5b": "তোমারই থাকে।", "du": "আমার সপ্তাহ গুছিয়ে নিতে সাহায্য করো।", "dr": "অবশ্যই! আগে তোমার ৩টি অগ্রাধিকার দিয়ে শুরু করি, তারপর সময় ভাগ করব এবং অপ্রত্যাশিত কাজের জন্য জায়গা রাখব।", "ex": "উদাহরণ", "next": "পরবর্তী", "start": "শুরু করো", "skip": "এড়িয়ে যাও ›", "by": "নির্মাতা:", "vo": "ভয়েস চালু করো"}, "ur": {"say": ["ہیلو! میں بری ہوں۔ چند سیکنڈ میں آپ کو BRYSS AI سے ملواتا ہوں۔", "BRYSS AI آپ کا ذاتی معاون ہے: یہ آپ کی زبان میں سوچنے، تخلیق کرنے اور اپنے منصوبوں کو آگے بڑھانے میں مدد کرتا ہے۔", "آپ اس سے سوال پوچھ سکتے ہیں، ساتھ مل کر کوڈ لکھ سکتے ہیں، آواز سے پیغام لکھوا سکتے ہیں اور فائلیں منسلک کر سکتے ہیں۔", "یہ بات چیت جتنا آسان ہے: آپ لکھتے ہیں، یہ جواب دیتا ہے۔ یہ ایک مثال دیکھیں!", "آپ کی گفتگو آپ کے ڈیوائس پر ہی رہتی ہے۔ آپ جب چاہیں اسے ایکسپورٹ کر سکتے ہیں یا نئے سرے سے شروع کر سکتے ہیں۔ اب آپ کی باری!"], "t2a": "آپ کی ذہانت،", "t2b": "بغیر حدود کے۔", "t3": "آپ کیا کر سکتے ہیں", "c1t": "سوال پوچھیں", "c1d": "واضح جوابات اور خیالات۔", "c2t": "کوڈنگ کریں", "c2d": "اپنے منصوبے بنائیں اور بہتر کریں۔", "c3t": "آواز سے لکھوائیں", "c3d": "آپ بولیں، BRYSS AI لکھے۔", "c4t": "فائلیں منسلک کریں", "c4d": "اپنی دستاویزات شامل کریں۔", "t4": "بات چیت جتنا آسان", "t5a": "آپ کی گفتگو", "t5b": "آپ ہی کے پاس رہتی ہے۔", "du": "میرا ہفتہ ترتیب دینے میں مدد کریں۔", "dr": "ضرور! پہلے آپ کی 3 ترجیحات سے شروع کرتے ہیں، پھر میں اوقات ترتیب دوں گا اور غیر متوقع کاموں کے لیے گنجائش رکھوں گا۔", "ex": "مثال", "next": "آگے", "start": "شروع کریں", "skip": "چھوڑیں", "by": "تخلیق کار:", "vo": "آواز چالو کریں"}, "fa": {"say": ["سلام! من بری هستم. در چند ثانیه BRYSS AI را به تو نشان می‌دهم.", "BRYSS AI دستیار شخصی توست: به زبان خودت کمکت می‌کند فکر کنی، بسازی و پروژه‌هایت را پیش ببری.", "می‌توانی از او سؤال بپرسی، با او کد بنویسی، پیام‌هایت را با صدا بگویی و فایل پیوست کنی.", "به سادگی یک گفتگو است: تو می‌نویسی، او جواب می‌دهد. این هم یک مثال!", "گفتگوهایت روی دستگاه خودت می‌مانند. هر وقت خواستی می‌توانی خروجی بگیری یا از اول شروع کنی. نوبت توست!"], "t2a": "هوش تو،", "t2b": "بدون مرز.", "t3": "چه کارهایی می‌توانی بکنی", "c1t": "سؤال بپرس", "c1d": "پاسخ‌های روشن و ایده‌ها.", "c2t": "کدنویسی", "c2d": "پروژه‌هایت را بساز و بهتر کن.", "c3t": "دیکته با صدا", "c3d": "تو حرف بزن، BRYSS AI می‌نویسد.", "c4t": "پیوست فایل", "c4d": "سندهایت را اضافه کن.", "t4": "ساده مثل یک گفتگو", "t5a": "گفتگوهای تو", "t5b": "پیش خودت می‌مانند.", "du": "کمکم کن هفته‌ام را برنامه‌ریزی کنم.", "dr": "حتماً! از ۳ اولویت تو شروع می‌کنیم، بعد زمان‌ها را جا می‌دهم و برای اتفاق‌های غیرمنتظره فاصله می‌گذارم.", "ex": "نمونه", "next": "بعدی", "start": "شروع", "skip": "رد کردن", "by": "ساخته‌شده توسط", "vo": "روشن کردن صدا"}, "id": {"say": ["Halo! Aku Bry. Aku akan mengenalkanmu pada BRYSS AI dalam beberapa detik.", "BRYSS AI adalah asisten pribadimu: membantumu berpikir, berkreasi, dan memajukan proyekmu dalam bahasamu sendiri.", "Kamu bisa bertanya, membuat kode bersamanya, mendikte pesan dengan suara, dan melampirkan file.", "Semudah mengobrol: kamu menulis, dia menjawab. Ini contohnya!", "Percakapanmu tetap ada di perangkatmu. Kamu bisa mengekspornya atau memulai dari awal kapan saja. Giliranmu!"], "t2a": "Kecerdasanmu,", "t2b": "tanpa batas.", "t3": "Yang bisa kamu lakukan", "c1t": "Bertanya", "c1d": "Jawaban jelas dan ide-ide.", "c2t": "Membuat kode", "c2d": "Bangun dan perbaiki proyekmu.", "c3t": "Dikte suara", "c3d": "Kamu bicara, BRYSS AI menulis.", "c4t": "Lampirkan file", "c4d": "Tambahkan dokumenmu.", "t4": "Semudah mengobrol", "t5a": "Percakapanmu", "t5b": "tetap bersamamu.", "du": "Bantu aku mengatur minggu ini.", "dr": "Tentu! Kita mulai dari 3 prioritasmu, lalu aku atur jadwalnya dan sisakan ruang untuk hal tak terduga.", "ex": "CONTOH", "next": "Lanjut", "start": "Mulai", "skip": "Lewati ›", "by": "Dibuat oleh", "vo": "Aktifkan suara"}, "vi": {"say": ["Xin chào! Mình là Bry. Mình sẽ giới thiệu BRYSS AI cho bạn trong vài giây.", "BRYSS AI là trợ lý cá nhân của bạn: giúp bạn suy nghĩ, sáng tạo và thúc đẩy dự án bằng chính ngôn ngữ của bạn.", "Bạn có thể đặt câu hỏi, cùng viết code, đọc to để soạn tin nhắn và đính kèm tệp.", "Đơn giản như một cuộc trò chuyện: bạn viết, nó trả lời. Đây là một ví dụ!", "Các cuộc trò chuyện được giữ trên thiết bị của bạn. Bạn có thể xuất ra hoặc bắt đầu lại bất cứ lúc nào. Đến lượt bạn!"], "t2a": "Trí tuệ của bạn,", "t2b": "không giới hạn.", "t3": "Bạn có thể làm gì", "c1t": "Đặt câu hỏi", "c1d": "Câu trả lời rõ ràng và ý tưởng.", "c2t": "Viết code", "c2d": "Xây dựng và cải thiện dự án.", "c3t": "Đọc để nhập", "c3d": "Bạn nói, BRYSS AI viết.", "c4t": "Đính kèm tệp", "c4d": "Thêm tài liệu của bạn.", "t4": "Đơn giản như trò chuyện", "t5a": "Cuộc trò chuyện của bạn", "t5b": "ở lại với bạn.", "du": "Giúp mình sắp xếp tuần này.", "dr": "Tất nhiên! Mình bắt đầu từ 3 ưu tiên của bạn, rồi sắp xếp thời gian và chừa khoảng trống cho việc bất ngờ.", "ex": "VÍ DỤ", "next": "Tiếp", "start": "Bắt đầu", "skip": "Bỏ qua ›", "by": "Tạo bởi", "vo": "Bật giọng nói"}, "th": {"say": ["สวัสดี! ฉันชื่อบรี จะพาคุณรู้จัก BRYSS AI ในไม่กี่วินาที", "BRYSS AI คือผู้ช่วยส่วนตัวของคุณ ช่วยให้คุณคิด สร้างสรรค์ และผลักดันโปรเจกต์ด้วยภาษาของคุณเอง", "คุณถามคำถามได้ เขียนโค้ดด้วยกันได้ พูดเพื่อพิมพ์ข้อความได้ และแนบไฟล์ได้", "ง่ายเหมือนการคุย: คุณพิมพ์ แล้วเขาตอบ นี่คือตัวอย่าง!", "บทสนทนาของคุณอยู่ในอุปกรณ์ของคุณ ส่งออกหรือเริ่มใหม่ได้ทุกเมื่อ ถึงตาคุณแล้ว!"], "t2a": "ปัญญาของคุณ", "t2b": "ไร้ขีดจำกัด", "t3": "สิ่งที่คุณทำได้", "c1t": "ถามคำถาม", "c1d": "คำตอบที่ชัดเจนและไอเดีย", "c2t": "เขียนโค้ด", "c2d": "สร้างและปรับปรุงโปรเจกต์", "c3t": "พูดเพื่อพิมพ์", "c3d": "คุณพูด BRYSS AI พิมพ์ให้", "c4t": "แนบไฟล์", "c4d": "เพิ่มเอกสารของคุณ", "t4": "ง่ายเหมือนการคุย", "t5a": "บทสนทนาของคุณ", "t5b": "อยู่กับคุณเสมอ", "du": "ช่วยจัดตารางสัปดาห์ของฉันหน่อย", "dr": "ได้เลย! เริ่มจาก 3 ลำดับความสำคัญของคุณ แล้วฉันจะจัดช่วงเวลาและเว้นที่ว่างไว้สำหรับเรื่องไม่คาดคิด", "ex": "ตัวอย่าง", "next": "ถัดไป", "start": "เริ่มเลย", "skip": "ข้าม ›", "by": "สร้างโดย", "vo": "เปิดเสียง"}, "sv": {"say": ["Hej! Jag heter Bry. Jag visar dig BRYSS AI på några sekunder.", "BRYSS AI är din personliga assistent: den hjälper dig att tänka, skapa och driva dina projekt framåt, på ditt eget språk.", "Du kan ställa frågor, programmera tillsammans, diktera meddelanden med rösten och bifoga filer.", "Det är lika enkelt som ett samtal: du skriver, den svarar. Här är ett exempel!", "Dina samtal stannar på din enhet. Du kan exportera dem eller börja om när du vill. Din tur!"], "t2a": "Din intelligens,", "t2b": "utan gränser.", "t3": "Vad du kan göra", "c1t": "Ställa frågor", "c1d": "Tydliga svar och idéer.", "c2t": "Programmera", "c2d": "Bygg och förbättra dina projekt.", "c3t": "Diktera med rösten", "c3d": "Du pratar, BRYSS AI skriver.", "c4t": "Bifoga filer", "c4d": "Lägg till dina dokument.", "t4": "Enkelt som ett samtal", "t5a": "Dina samtal", "t5b": "stannar hos dig.", "du": "Hjälp mig planera min vecka.", "dr": "Gärna! Vi börjar med dina 3 prioriteringar, sedan lägger jag in tider och sparar marginal för det oväntade.", "ex": "EXEMPEL", "next": "Nästa", "start": "Kom igång", "skip": "Hoppa över ›", "by": "Skapad av", "vo": "Slå på rösten"}, "el": {"say": ["Γεια σου! Είμαι ο Μπράι. Θα σου δείξω το BRYSS AI σε λίγα δευτερόλεπτα.", "Το BRYSS AI είναι ο προσωπικός σου βοηθός: σε βοηθά να σκέφτεσαι, να δημιουργείς και να προχωράς τα έργα σου, στη δική σου γλώσσα.", "Μπορείς να του κάνεις ερωτήσεις, να προγραμματίζεις μαζί του, να υπαγορεύεις μηνύματα με τη φωνή σου και να επισυνάπτεις αρχεία.", "Είναι απλό σαν συζήτηση: εσύ γράφεις, αυτό απαντά. Να ένα παράδειγμα!", "Οι συζητήσεις σου μένουν στη συσκευή σου. Μπορείς να τις εξάγεις ή να ξεκινήσεις από την αρχή όποτε θέλεις. Η σειρά σου!"], "t2a": "Η εξυπνάδα σου,", "t2b": "χωρίς όρια.", "t3": "Τι μπορείς να κάνεις", "c1t": "Να ρωτάς", "c1d": "Καθαρές απαντήσεις και ιδέες.", "c2t": "Να προγραμματίζεις", "c2d": "Φτιάξε και βελτίωσε τα έργα σου.", "c3t": "Να υπαγορεύεις", "c3d": "Μιλάς εσύ, γράφει το BRYSS AI.", "c4t": "Να επισυνάπτεις αρχεία", "c4d": "Πρόσθεσε τα έγγραφά σου.", "t4": "Απλό σαν συζήτηση", "t5a": "Οι συζητήσεις σου", "t5b": "μένουν δικές σου.", "du": "Βοήθησέ με να οργανώσω την εβδομάδα μου.", "dr": "Φυσικά! Ξεκινάμε από τις 3 προτεραιότητές σου, μετά βάζω τις ώρες και αφήνω περιθώριο για τα απρόοπτα.", "ex": "ΠΑΡΑΔΕΙΓΜΑ", "next": "Επόμενο", "start": "Ξεκίνα", "skip": "Παράλειψη ›", "by": "Δημιουργός:", "vo": "Ενεργοποίηση φωνής"}, "he": {"say": ["היי! אני בריי. אראה לך את BRYSS AI בכמה שניות.", "BRYSS AI הוא העוזר האישי שלך: הוא עוזר לך לחשוב, ליצור ולקדם את הפרויקטים שלך, בשפה שלך.", "אפשר לשאול אותו שאלות, לתכנת איתו, להכתיב הודעות בקול ולצרף קבצים.", "זה פשוט כמו שיחה: אתה כותב, והוא עונה. הנה דוגמה!", "השיחות שלך נשארות במכשיר שלך. אפשר לייצא אותן או להתחיל מחדש בכל רגע. התור שלך!"], "t2a": "האינטליגנציה שלך,", "t2b": "בלי גבולות.", "t3": "מה אפשר לעשות", "c1t": "לשאול שאלות", "c1d": "תשובות ברורות ורעיונות.", "c2t": "לתכנת", "c2d": "לבנות ולשפר את הפרויקטים שלך.", "c3t": "להכתיב בקול", "c3d": "אתה מדבר, BRYSS AI כותב.", "c4t": "לצרף קבצים", "c4d": "הוסף את המסמכים שלך.", "t4": "פשוט כמו שיחה", "t5a": "השיחות שלך", "t5b": "נשארות אצלך.", "du": "עזור לי לתכנן את השבוע שלי.", "dr": "בטח! נתחיל מ-3 העדיפויות שלך, ואז אשבץ זמנים ואשאיר מרווח לבלתי צפוי.", "ex": "דוגמה", "next": "הבא", "start": "מתחילים", "skip": "דלג", "by": "נוצר על ידי", "vo": "הפעל קול"}, "ro": {"say": ["Salut! Eu sunt Bry. Îți arăt BRYSS AI în câteva secunde.", "BRYSS AI este asistentul tău personal: te ajută să gândești, să creezi și să îți duci proiectele mai departe, în limba ta.", "Poți să îi pui întrebări, să programezi împreună, să dictezi mesaje cu vocea și să atașezi fișiere.", "E simplu ca o conversație: tu scrii, el răspunde. Iată un exemplu!", "Conversațiile tale rămân pe dispozitivul tău. Le poți exporta sau poți începe de la zero oricând. Rândul tău!"], "t2a": "Inteligența ta,", "t2b": "fără limite.", "t3": "Ce poți face", "c1t": "Pune întrebări", "c1d": "Răspunsuri clare și idei.", "c2t": "Programează", "c2d": "Construiește și îmbunătățește proiecte.", "c3t": "Dictează cu vocea", "c3d": "Tu vorbești, BRYSS AI scrie.", "c4t": "Atașează fișiere", "c4d": "Adaugă documentele tale.", "t4": "Simplu ca o conversație", "t5a": "Conversațiile tale", "t5b": "rămân la tine.", "du": "Ajută-mă să-mi organizez săptămâna.", "dr": "Sigur! Începem cu cele 3 priorități ale tale, apoi pun orele și las o marjă pentru imprevizibil.", "ex": "EXEMPLU", "next": "Următorul", "start": "Începe", "skip": "Sari peste ›", "by": "Creat de", "vo": "Pornește vocea"}, "cs": {"say": ["Ahoj! Jsem Bry. Za pár vteřin ti ukážu BRYSS AI.", "BRYSS AI je tvůj osobní asistent: pomáhá ti přemýšlet, tvořit a posouvat projekty dopředu ve tvém jazyce.", "Můžeš se ho ptát, programovat s ním, diktovat zprávy hlasem a přikládat soubory.", "Je to jednoduché jako konverzace: ty píšeš, on odpovídá. Tady je příklad!", "Tvoje konverzace zůstávají na tvém zařízení. Můžeš je kdykoli exportovat nebo začít znovu. Jsi na řadě!"], "t2a": "Tvá inteligence", "t2b": "bez hranic.", "t3": "Co můžeš dělat", "c1t": "Ptát se", "c1d": "Jasné odpovědi a nápady.", "c2t": "Programovat", "c2d": "Vytvářej a vylepšuj projekty.", "c3t": "Diktovat hlasem", "c3d": "Ty mluvíš, BRYSS AI píše.", "c4t": "Přikládat soubory", "c4d": "Přidej své dokumenty.", "t4": "Jednoduché jako rozhovor", "t5a": "Tvoje konverzace", "t5b": "zůstávají u tebe.", "du": "Pomoz mi naplánovat týden.", "dr": "Jasně! Začneme tvými 3 prioritami, pak rozvrhnu časy a nechám rezervu na nečekané věci.", "ex": "PŘÍKLAD", "next": "Další", "start": "Začít", "skip": "Přeskočit ›", "by": "Vytvořil", "vo": "Zapnout hlas"}, "hu": {"say": ["Szia! Bry vagyok. Néhány másodperc alatt megmutatom a BRYSS AI-t.", "A BRYSS AI a személyes asszisztensed: segít gondolkodni, alkotni és előrevinni a projektjeidet a saját nyelveden.", "Kérdezhetsz tőle, programozhatsz vele, hangon diktálhatsz üzeneteket, és csatolhatsz fájlokat.", "Olyan egyszerű, mint egy beszélgetés: te írsz, ő válaszol. Íme egy példa!", "A beszélgetéseid az eszközödön maradnak. Bármikor exportálhatod őket, vagy újrakezdheted. Te jössz!"], "t2a": "Az intelligenciád", "t2b": "határok nélkül.", "t3": "Mit tehetsz", "c1t": "Kérdezz", "c1d": "Világos válaszok és ötletek.", "c2t": "Programozz", "c2d": "Építsd és fejleszd a projektjeidet.", "c3t": "Diktálj hangon", "c3d": "Te beszélsz, a BRYSS AI ír.", "c4t": "Csatolj fájlokat", "c4d": "Add hozzá a dokumentumaidat.", "t4": "Egyszerű, mint egy beszélgetés", "t5a": "A beszélgetéseid", "t5b": "nálad maradnak.", "du": "Segíts megtervezni a hetemet.", "dr": "Persze! Kezdjük a 3 prioritásoddal, aztán beosztom az időpontokat, és hagyok tartalékot a váratlan dolgokra.", "ex": "PÉLDA", "next": "Tovább", "start": "Kezdjük", "skip": "Kihagyás ›", "by": "Készítette", "vo": "Hang bekapcsolása"}, "sw": {"say": ["Habari! Mimi ni Bry. Nitakuonyesha BRYSS AI kwa sekunde chache.", "BRYSS AI ni msaidizi wako binafsi: anakusaidia kufikiri, kubuni na kusukuma miradi yako mbele, kwa lugha yako.", "Unaweza kumuuliza maswali, kuandika msimbo pamoja naye, kutamka ujumbe kwa sauti na kuambatisha faili.", "Ni rahisi kama mazungumzo: wewe unaandika, yeye anajibu. Huu hapa mfano!", "Mazungumzo yako yanabaki kwenye kifaa chako. Unaweza kuyahamisha au kuanza upya wakati wowote. Zamu yako!"], "t2a": "Akili yako,", "t2b": "bila kikomo.", "t3": "Unachoweza kufanya", "c1t": "Uliza maswali", "c1d": "Majibu wazi na mawazo.", "c2t": "Andika msimbo", "c2d": "Jenga na boresha miradi yako.", "c3t": "Tamka kwa sauti", "c3d": "Wewe unaongea, BRYSS AI anaandika.", "c4t": "Ambatisha faili", "c4d": "Ongeza nyaraka zako.", "t4": "Rahisi kama mazungumzo", "t5a": "Mazungumzo yako", "t5b": "yanabaki nawe.", "du": "Nisaidie kupanga wiki yangu.", "dr": "Bila shaka! Tuanze na vipaumbele vyako 3, kisha nitapanga muda na kuacha nafasi kwa mambo yasiyotarajiwa.", "ex": "MFANO", "next": "Endelea", "start": "Anza", "skip": "Ruka ›", "by": "Imeundwa na", "vo": "Washa sauti"}});
+
+
+// le robot (SVG) — injecté dans tous les emplacements .botslot
+const BOT=`<svg class="bot" viewBox="0 0 120 140" aria-hidden="true">
+<line x1="60" y1="16" x2="60" y2="30" stroke="#a987ff" stroke-width="3" stroke-linecap="round"/>
+<circle class="ant" cx="60" cy="11" r="6.5" fill="#7fe4ff"/>
+<rect x="6" y="56" width="11" height="28" rx="5.5" fill="#7c5cf0"/><rect x="103" y="56" width="11" height="28" rx="5.5" fill="#7c5cf0"/>
+<rect x="34" y="104" width="52" height="32" rx="15" fill="url(#bgA)"/>
+<circle class="chest" cx="60" cy="120" r="5.5" fill="#7fe4ff"/>
+<rect class="arm" x="86" y="108" width="11" height="26" rx="5.5" fill="#8d6bff"/>
+<rect x="15" y="28" width="90" height="72" rx="27" fill="url(#bgA)"/>
+<rect x="25" y="39" width="70" height="47" rx="19" fill="#0b0a1c"/>
+<ellipse class="eye" cx="45" cy="58" rx="7" ry="9" fill="#7fe4ff"/><ellipse class="eye" cx="75" cy="58" rx="7" ry="9" fill="#7fe4ff"/>
+<path class="ms" d="M51 73 Q60 80 69 73" stroke="#7fe4ff" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+<ellipse class="mo" cx="60" cy="75" rx="7.5" ry="5.5" fill="#7fe4ff"/>
+<circle cx="30" cy="76" r="3.4" fill="#ff8ad8" opacity=".55"/><circle cx="90" cy="76" r="3.4" fill="#ff8ad8" opacity=".55"/>
+</svg>`;
+intro.querySelectorAll('.botslot').forEach(s=>s.innerHTML=BOT);
+
+const slides=[...intro.querySelectorAll('.slide')], dotsWrap=$('#introDots'), nextBtn=$('#introNext'), skipBtn=$('#introSkip'), voiceBtn=$('#gVoice'), gtext=$('#gtext'), gbubble=$('#gbubble');
+const last=slides.length-1; let cur=0, open=false, demoT=[], raf=0, lang='fr', typeT=0, full='', voiceOn=false, spk=0;
+const SS=window.speechSynthesis;
+if(!SS||!window.SpeechSynthesisUtterance)voiceBtn.style.display='none';
+
+// langue : choix mémorisé, sinon langue du navigateur
+try{lang=localStorage.getItem(LKEY)||''}catch(e){}
+if(!T[lang]){const nav=(navigator.language||'fr').slice(0,2);lang=T[nav]?nav:'en'}
+
+function applyLang(l,save){if(!T[l])return;lang=l;const t=T[l];
+ intro.dir=RTL.has(l)?'rtl':'ltr';intro.lang=l;document.documentElement.lang=l;
+ intro.querySelectorAll('[data-i]').forEach(el=>{el.textContent=t[el.dataset.i]});
+ skipBtn.textContent=t.skip;nextBtn.textContent=cur===last?t.start:t.next;voiceBtn.title=t.vo;voiceBtn.setAttribute('aria-label',t.vo);
+ intro.querySelectorAll('.lang').forEach(b=>b.classList.toggle('sel',b.dataset.lang===l));
+ const sel=$('#language');if(sel&&sel.value!==l&&[...sel.options].some(o=>o.value===l))sel.value=l;
+ if(save)try{localStorage.setItem(LKEY,l)}catch(e){}}
+
+// voix du robot (facultative)
+function speechCancel(){spk++;intro.classList.remove('speaking');if(SS)try{SS.cancel()}catch(e){}}
+function speak(txt){if(!voiceOn||!SS)return;speechCancel();const id=spk,u=new SpeechSynthesisUtterance(txt);u.lang=LANGS[lang];
+ u.onstart=()=>{if(id===spk)intro.classList.add('speaking')};u.onend=u.onerror=()=>{if(id===spk)intro.classList.remove('speaking')};SS.speak(u)}
+voiceBtn.onclick=()=>{voiceOn=!voiceOn;voiceBtn.textContent=voiceOn?'🔊':'🔇';voiceBtn.setAttribute('aria-pressed',voiceOn);if(voiceOn&&cur>0)speak(full);else speechCancel()}
+
+// le robot parle : texte tapé dans la bulle + bouche animée
+function say(txt){clearInterval(typeT);full=txt;speechCancel();
+ if(RM){gtext.textContent=txt;speak(txt);return 0}
+ gtext.textContent='';let k=0;intro.classList.add('talking');
+ typeT=setInterval(()=>{gtext.textContent=txt.slice(0,++k);if(k>=txt.length){clearInterval(typeT);intro.classList.remove('talking')}},TYPE);
+ speak(txt);return txt.length*TYPE}
+gbubble.onclick=()=>{clearInterval(typeT);gtext.textContent=full;intro.classList.remove('talking')};
+
+// pastilles de progression (la 1re étape = choix de langue : pas de pastille)
+const dots=slides.map((s,i)=>{const d=document.createElement('button');d.type='button';d.className='dot'+(i===last?' last manual':'');if(i===0){d.hidden=true;d.className+=' manual'}d.setAttribute('aria-label',(i)+'/'+last);d.innerHTML='<i></i>';d.onclick=()=>{if(i>0)go(i)};dotsWrap.append(d);return d});
+
+// démo de conversation (diapo 5)
+function stopDemo(){demoT.forEach(t=>{clearTimeout(t);clearInterval(t)});demoT=[]}
+function runDemo(){stopDemo();const u=$('#demoUser'),a=$('#demoBot'),ty=$('#demoTyping'),MSG=T[lang].dr;u.textContent=T[lang].du;u.classList.remove('on');a.classList.remove('on');ty.classList.remove('on');a.textContent='';
+ if(RM){u.classList.add('on');a.classList.add('on');a.textContent=MSG;return}
+ demoT.push(setTimeout(()=>u.classList.add('on'),800));
+ demoT.push(setTimeout(()=>ty.classList.add('on'),1700));
+ demoT.push(setTimeout(()=>{ty.classList.remove('on');a.classList.add('on');let k=0;const iv=setInterval(()=>{a.textContent=MSG.slice(0,++k);if(k>=MSG.length)clearInterval(iv)},24);demoT.push(iv)},3000));}
+
+function go(n){if(n<0||n>last)return;cur=n;
+ intro.classList.toggle('s0',n===0);intro.classList.toggle('islast',n===last);
+ slides.forEach((s,j)=>{s.classList.toggle('active',j===n);s.setAttribute('aria-hidden',j!==n)});
+ let ms=0;
+ if(n>0)ms=say(T[lang].say[n-1]);else{clearInterval(typeT);speechCancel();intro.classList.remove('talking')}
+ if(n>0&&n<last){const base=+slides[n].dataset.t||5000;dots[n].style.setProperty('--t',Math.max(base,ms+3000)+'ms')}
+ dots.forEach((d,j)=>{d.classList.toggle('done',j<n);d.classList.toggle('active',j===n)});
+ nextBtn.textContent=n===last?T[lang].start:T[lang].next;
+ skipBtn.style.visibility=n===last?'hidden':'visible';
+ if(n===4)runDemo();else stopDemo();}
+
+// choix de la langue → le robot commence
+const langsEl=$('#langs'),searchEl=$('#langSearch');
+META.forEach(m=>{const b=document.createElement('button');b.type='button';b.className='lang';b.dataset.lang=m[0];b.dataset.q=(m[0]+' '+m[1]+' '+m[2]).toLowerCase();b.textContent=m[1];b.lang=m[0];b.onclick=()=>{applyLang(m[0],true);go(1)};langsEl.append(b)});
+searchEl.oninput=()=>{const q=searchEl.value.trim().toLowerCase();let n=0;langsEl.querySelectorAll('.lang').forEach(b=>{const ok=!q||b.dataset.q.includes(q);b.style.display=ok?'':'none';if(ok)n++});langsEl.classList.toggle('empty',!n)};
+searchEl.addEventListener('keydown',e=>{e.stopPropagation();if(e.key==='Enter'){const f=[...langsEl.querySelectorAll('.lang')].find(b=>b.style.display!=='none');if(f)f.click()}});
+
+// fond animé (réseau de particules)
+const cv=$('#introFx'),cx=cv.getContext('2d');let W=0,H=0,pts=[];
+function size(){const r=window.devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*r;cv.height=H*r;cx.setTransform(r,0,0,r,0,0);
+ pts=Array.from({length:Math.min(70,Math.floor(W*H/17000))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.5+.6}));}
+function draw(move){cx.clearRect(0,0,W,H);
+ for(const p of pts){if(move){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}}
+ for(let i=0;i<pts.length;i++){const p=pts[i];
+  for(let j=i+1;j<pts.length;j++){const q=pts[j],d=Math.hypot(p.x-q.x,p.y-q.y);if(d<130){cx.strokeStyle='rgba(150,120,255,'+(.24*(1-d/130))+')';cx.lineWidth=1;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}
+  cx.fillStyle='rgba(185,165,255,.85)';cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fill()}}
+function loop(){draw(true);raf=requestAnimationFrame(loop)}
+function onResize(){size();if(RM)draw(false)}
+
+// fin (Passer / Commencer) : on mémorise pour ne plus jamais la remontrer
+function finish(){if(!open)return;open=false;stopDemo();clearInterval(typeT);speechCancel();cancelAnimationFrame(raf);
+ try{localStorage.setItem(KEY,'1')}catch(e){}
+ document.documentElement.classList.add('seen-intro');
+ intro.classList.add('hide');removeEventListener('resize',onResize);removeEventListener('keydown',onKey);
+ setTimeout(()=>{intro.hidden=true;promptBox.focus({preventScroll:true})},650);}
+function onKey(e){if(e.key==='Escape')finish();else if(e.key==='ArrowRight'&&cur>0)next();else if(e.key==='ArrowLeft'&&cur>1)go(cur-1)}
+function next(){cur===last?finish():go(cur+1)}
+function start(){open=true;intro.hidden=false;document.documentElement.classList.remove('seen-intro');intro.classList.remove('hide');void intro.offsetWidth;
+ searchEl.value='';searchEl.oninput();applyLang(lang,false);size();RM?draw(false):(cancelAnimationFrame(raf),loop());addEventListener('resize',onResize);addEventListener('keydown',onKey);go(0);}
+
+nextBtn.onclick=next;skipBtn.onclick=finish;
+dotsWrap.addEventListener('animationend',e=>{if(e.animationName==='dotfill'&&open&&cur<last)go(cur+1)});
+// maintenir appuyé = pause (comme une story)
+intro.addEventListener('pointerdown',e=>{if(!e.target.closest('button'))intro.classList.add('paused')});
+['pointerup','pointercancel','pointerleave'].forEach(ev=>intro.addEventListener(ev,()=>intro.classList.remove('paused')));
+
+// Paramètres : changer de langue + revoir la présentation
+const sel=$('#language');if(sel){sel.innerHTML=META.map(m=>'<option value="'+m[0]+'">'+m[1]+'</option>').join('');sel.value=lang;sel.onchange=()=>applyLang(sel.value,true)}
+const rp=$('#replayIntro');if(rp)rp.onclick=()=>{$('#modalback').style.display='none';start()};
+applyLang(lang,false);
+
+// premier lancement ? (sinon la classe seen-intro a déjà masqué l'animation)
+let done=false;try{done=localStorage.getItem(KEY)==='1'}catch(e){}
+if(done){intro.hidden=true}else{start()}
+})();
+</script>
+</body></html>
